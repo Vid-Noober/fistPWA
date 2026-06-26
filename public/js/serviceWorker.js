@@ -1,8 +1,9 @@
 var assets = [
-    "/",
-    "/index.html",
-    "/js/app.js"
-]
+  "/",
+  "/index.html",
+  "/js/app.js",
+  "/manifest.json"
+];
 
 self.addEventListener("install", function(installEvent) {
     installEvent.waitUntil(
