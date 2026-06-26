@@ -1,17 +1,27 @@
-var CACHE_NAME = "my-test-pwa-v2";
+var CACHE_NAME = "my-test-pwa-v5";
 
 var assets = [
   "/",
   "/index.html",
   "/js/app.js",
-  "/manifest.json"
+  "/manifest.json",
+  "/icons/icon_32x32.png",
+  "/icons/icon_128x128.png",
+  "/icons/icon_256x256.png",
+  "/icons/icon_512x512.png"
 ];
 
 self.addEventListener("install", function(installEvent) {
   self.skipWaiting();
   installEvent.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
-      return cache.addAll(assets);
+      return Promise.allSettled(
+        assets.map(function(asset) {
+          return cache.add(asset).catch(function(err) {
+            console.log("Failed to cache: " + asset, err);
+          });
+        })
+      );
     })
   );
 });
