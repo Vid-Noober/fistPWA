@@ -1,10 +1,14 @@
-var CACHE_NAME = "my-test-pwa-v2";
+var CACHE_NAME = "my-test-pwa-v3";
 
 var assets = [
   "/",
   "/index.html",
   "/js/app.js",
-  "/manifest.json"
+  "/manifest.json",
+  "/icons/icon_32x32.png",
+  "/icons/icon_128x128.png",
+  "/icons/icon_256x256.png",
+  "/icons/icon_512x512.png"
 ];
 
 self.addEventListener("install", function(installEvent) {
